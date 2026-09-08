@@ -1,0 +1,81 @@
+Realignment events (single tie changed): 5414 
+
+=== Naive test (ties counted as success) ===
+96.7 % (null=33.3%)
+
+UnbalancedLoad tie structure: all equal 0.1 % | two equal 53.4 % | all distinct 46.5 %
+
+=== PRIMARY test (all 3 distinct, n=2516) ===
+
+	Exact binomial test
+
+data:  sum(strict$is_max_ul) and nrow(strict)
+number of successes = 2430, number of trials = 2516, p-value < 2.2e-16
+alternative hypothesis: true probability of success is not equal to 0.3333333
+95 percent confidence interval:
+ 0.9579569 0.9725704
+sample estimates:
+probability of success 
+             0.9658188 
+
+
+=== Conditional logit, UnbalancedLoad only ===
+Call:
+coxph(formula = Surv(rep(1, 16242L), changed) ~ unbal_load + 
+    strata(event_id), data = long, method = "exact")
+
+  n= 16242, number of events= 5414 
+
+               coef exp(coef) se(coef)     z Pr(>|z|)    
+unbal_load 0.320235  1.377451 0.008392 38.16   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+           exp(coef) exp(-coef) lower .95 upper .95
+unbal_load     1.377      0.726     1.355       1.4
+
+Concordance= 0.975  (se = 0.002 )
+Likelihood ratio test= 10042  on 1 df,   p=<2e-16
+Wald test            = 1456  on 1 df,   p=<2e-16
+Score (logrank) test = 8206  on 1 df,   p=<2e-16
+
+
+=== Conditional logit, UnbalancedLoad + embeddedness + betweenness ===
+Call:
+coxph(formula = Surv(rep(1, 16242L), changed) ~ unbal_load + 
+    embeddedness + betweenness + strata(event_id), data = long, 
+    method = "exact")
+
+  n= 16242, number of events= 5414 
+
+                  coef exp(coef)  se(coef)      z Pr(>|z|)    
+unbal_load    0.322294  1.380291  0.008503 37.904   <2e-16 ***
+embeddedness -0.064205  0.937813  0.027314 -2.351   0.0187 *  
+betweenness   0.001215  1.001216  0.000727  1.672   0.0946 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+             exp(coef) exp(-coef) lower .95 upper .95
+unbal_load      1.3803     0.7245    1.3575    1.4035
+embeddedness    0.9378     1.0663    0.8889    0.9894
+betweenness     1.0012     0.9988    0.9998    1.0026
+
+Concordance= 0.977  (se = 0.002 )
+Likelihood ratio test= 10052  on 3 df,   p=<2e-16
+Wald test            = 1449  on 3 df,   p=<2e-16
+Score (logrank) test = 8326  on 3 df,   p=<2e-16
+
+
+=== Pressure Proportion refinement (n=2606) ===
+
+	Exact binomial test
+
+data:  sum(strict_pp$is_max_pp) and nrow(strict_pp)
+number of successes = 2510, number of trials = 2606, p-value < 2.2e-16
+alternative hypothesis: true probability of success is not equal to 0.3333333
+95 percent confidence interval:
+ 0.9551988 0.9700612
+sample estimates:
+probability of success 
+             0.9631619 
+

@@ -1,0 +1,14 @@
+Years to process: 1816 - 2012 ( 197 years )
+... 1835  ( 20 / 197 ) elapsed: 0 min
+... 1855  ( 40 / 197 ) elapsed: 0 min
+... 1875  ( 60 / 197 ) elapsed: 0 min
+... 1895  ( 80 / 197 ) elapsed: 0 min
+... 1915  ( 100 / 197 ) elapsed: 0.1 min
+... 1935  ( 120 / 197 ) elapsed: 0.1 min
+... 1955  ( 140 / 197 ) elapsed: 0.2 min
+... 1975  ( 160 / 197 ) elapsed: 0.3 min
+... 1995  ( 180 / 197 ) elapsed: 0.6 min
+Total elapsed: 0.9 min
+Total closed triads across all years: 378623 
+Balanced: 368273  Unbalanced: 10350 
+02_triads_and_load.R complete.

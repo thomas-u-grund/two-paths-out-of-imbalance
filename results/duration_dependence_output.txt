@@ -1,0 +1,193 @@
+=== DISSOLUTION, no duration control ===
+
+z test of coefficients:
+
+               Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)  -4.0585909  0.2699262 -15.0359 < 2.2e-16 ***
+z_tie_btw    -0.0031159  0.0626972  -0.0497    0.9604    
+z_tie_emb    -2.4548586  0.1641100 -14.9586 < 2.2e-16 ***
+z_actor_load -0.4877026  0.0921462  -5.2927 1.205e-07 ***
+z_cinc        0.5542110  0.0874673   6.3362 2.355e-10 ***
+era1945-1989 -0.3406393  0.2137101  -1.5939    0.1110    
+erapost-1989 -1.0134735  0.2462187  -4.1162 3.853e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+=== DISSOLUTION, with duration dummies (PRIMARY) ===
+
+z test of coefficients:
+
+               Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)   -4.019768   0.261082 -15.3966 < 2.2e-16 ***
+z_tie_btw      0.025818   0.053633   0.4814 0.6302487    
+z_tie_emb     -2.507699   0.161379 -15.5392 < 2.2e-16 ***
+z_actor_load  -0.496096   0.089113  -5.5670 2.591e-08 ***
+z_cinc         0.529255   0.083349   6.3499 2.155e-10 ***
+era1945-1989  -0.351165   0.200816  -1.7487 0.0803447 .  
+erapost-1989  -0.858413   0.237245  -3.6183 0.0002966 ***
+dur_binyr2    -0.403381   0.147741  -2.7303 0.0063272 ** 
+dur_binyr3     0.826684   0.202784   4.0767 4.568e-05 ***
+dur_binyr4-5  -1.787769   0.406077  -4.4025 1.070e-05 ***
+dur_binyr6-10 -1.750188   0.410933  -4.2591 2.053e-05 ***
+dur_binyr11+  -2.598030   0.958698  -2.7100 0.0067292 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+=== REALIGNMENT, no duration control ===
+
+z test of coefficients:
+
+              Estimate Std. Error z value  Pr(>|z|)    
+(Intercept)  -0.620396   0.130049 -4.7705 1.838e-06 ***
+z_tie_btw    -0.022995   0.037428 -0.6144     0.539    
+z_tie_emb     0.443567   0.058411  7.5938 3.106e-14 ***
+z_actor_load  0.280651   0.057090  4.9160 8.834e-07 ***
+z_cinc       -0.203492   0.034412 -5.9134 3.350e-09 ***
+era1945-1989  0.825793   0.134159  6.1553 7.493e-10 ***
+erapost-1989  0.773468   0.143751  5.3806 7.423e-08 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+=== REALIGNMENT, with duration dummies (PRIMARY) ===
+
+z test of coefficients:
+
+               Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)   -0.246421   0.104288  -2.3629   0.01813 *  
+z_tie_btw     -0.027230   0.030624  -0.8892   0.37390    
+z_tie_emb      0.438769   0.046413   9.4535 < 2.2e-16 ***
+z_actor_load   0.219847   0.048758   4.5089 6.515e-06 ***
+z_cinc        -0.200870   0.028159  -7.1335 9.782e-13 ***
+era1945-1989   0.713848   0.105571   6.7618 1.363e-11 ***
+erapost-1989   0.744920   0.110599   6.7353 1.635e-11 ***
+dur_binyr2    -0.117896   0.053187  -2.2166   0.02665 *  
+dur_binyr3    -0.937658   0.084367 -11.1141 < 2.2e-16 ***
+dur_binyr4-5  -1.492359   0.085527 -17.4490 < 2.2e-16 ***
+dur_binyr6-10 -1.871685   0.099657 -18.7813 < 2.2e-16 ***
+dur_binyr11+  -1.737190   0.114113 -15.2234 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+=== LRT, dissolution: duration dummies jointly significant? ===
+Analysis of Deviance Table
+
+Model 1: event_dissolve ~ z_tie_btw + z_tie_emb + z_actor_load + z_cinc + 
+    era
+Model 2: event_dissolve ~ z_tie_btw + z_tie_emb + z_actor_load + z_cinc + 
+    era + dur_bin
+  Resid. Df Resid. Dev Df Deviance  Pr(>Chi)    
+1     10163     2833.7                          
+2     10158     2732.5  5   101.21 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+=== LRT, realignment: duration dummies jointly significant? ===
+Analysis of Deviance Table
+
+Model 1: event_flip ~ z_tie_btw + z_tie_emb + z_actor_load + z_cinc + 
+    era
+Model 2: event_flip ~ z_tie_btw + z_tie_emb + z_actor_load + z_cinc + 
+    era + dur_bin
+  Resid. Df Resid. Dev Df Deviance  Pr(>Chi)    
+1     10163      13428                          
+2     10158      12691  5   737.18 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+=== Trade robustness, WITH duration control, dissolution ===
+N = 9811 
+
+z test of coefficients:
+
+               Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)   -4.202655   0.300432 -13.9887 < 2.2e-16 ***
+z_trade       -0.226946   0.081753  -2.7760  0.005503 ** 
+z_tie_emb     -2.463507   0.161541 -15.2500 < 2.2e-16 ***
+z_actor_load  -0.517177   0.097630  -5.2973 1.175e-07 ***
+z_cinc         0.681321   0.100024   6.8116 9.653e-12 ***
+era1945-1989  -0.209852   0.228406  -0.9188  0.358219    
+erapost-1989  -0.671013   0.252172  -2.6609  0.007792 ** 
+dur_binyr2    -0.505476   0.154698  -3.2675  0.001085 ** 
+dur_binyr3     0.820692   0.198012   4.1447 3.403e-05 ***
+dur_binyr4-5  -1.780311   0.412346  -4.3175 1.578e-05 ***
+dur_binyr6-10 -1.707606   0.408963  -4.1755 2.974e-05 ***
+dur_binyr11+  -2.634100   0.959928  -2.7441  0.006068 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+=== Trade robustness, WITH duration control, realignment ===
+N = 9811 
+
+z test of coefficients:
+
+               Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)   -0.502079   0.125203  -4.0101 6.069e-05 ***
+z_trade        0.174086   0.029064   5.9898 2.101e-09 ***
+z_tie_emb      0.365925   0.048960   7.4740 7.778e-14 ***
+z_actor_load   0.195466   0.055939   3.4942 0.0004754 ***
+z_cinc        -0.277384   0.031162  -8.9015 < 2.2e-16 ***
+era1945-1989   0.965575   0.129242   7.4711 7.955e-14 ***
+erapost-1989   0.986042   0.133778   7.3707 1.697e-13 ***
+dur_binyr2    -0.088848   0.054008  -1.6451 0.0999472 .  
+dur_binyr3    -0.879454   0.085068 -10.3382 < 2.2e-16 ***
+dur_binyr4-5  -1.407598   0.089182 -15.7834 < 2.2e-16 ***
+dur_binyr6-10 -1.902629   0.102162 -18.6237 < 2.2e-16 ***
+dur_binyr11+  -1.697486   0.117659 -14.4272 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+
+=== Contiguity+regime robustness, WITH duration control, dissolution ===
+N = 8076 
+
+z test of coefficients:
+
+               Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)   -4.572922   0.317715 -14.3932 < 2.2e-16 ***
+z_tie_btw      0.153289   0.079988   1.9164  0.055315 .  
+z_tie_emb     -2.596978   0.191864 -13.5355 < 2.2e-16 ***
+z_actor_load  -0.361499   0.122522  -2.9505  0.003173 ** 
+z_cinc         0.653380   0.114084   5.7272 1.021e-08 ***
+z_contig      -0.079228   0.068884  -1.1502  0.250074    
+z_polity      -0.120386   0.084526  -1.4242  0.154378    
+era1945-1989  -0.048816   0.254354  -0.1919  0.847803    
+erapost-1989  -0.774848   0.296098  -2.6169  0.008874 ** 
+dur_binyr2    -0.273892   0.184350  -1.4857  0.137355    
+dur_binyr3     1.269905   0.214271   5.9266 3.092e-09 ***
+dur_binyr4-5  -1.377145   0.556487  -2.4747  0.013334 *  
+dur_binyr6-10 -1.290198   0.451044  -2.8605  0.004230 ** 
+dur_binyr11+  -2.208703   0.968101  -2.2815  0.022520 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+=== Contiguity+regime robustness, WITH duration control, realignment ===
+N = 8076 
+
+z test of coefficients:
+
+               Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)   -0.234904   0.131257  -1.7897  0.073509 .  
+z_tie_btw     -0.026278   0.033789  -0.7777  0.436740    
+z_tie_emb      0.290553   0.053183   5.4633 4.674e-08 ***
+z_actor_load   0.139141   0.052570   2.6468  0.008127 ** 
+z_cinc        -0.258142   0.037560  -6.8728 6.294e-12 ***
+z_contig      -0.076892   0.025892  -2.9698  0.002980 ** 
+z_polity       0.144359   0.028447   5.0747 3.880e-07 ***
+era1945-1989   0.772883   0.129014   5.9907 2.089e-09 ***
+erapost-1989   0.699684   0.132268   5.2899 1.224e-07 ***
+dur_binyr2    -0.054763   0.059227  -0.9246  0.355154    
+dur_binyr3    -0.877030   0.093294  -9.4007 < 2.2e-16 ***
+dur_binyr4-5  -1.457483   0.097541 -14.9423 < 2.2e-16 ***
+dur_binyr6-10 -1.967500   0.114515 -17.1811 < 2.2e-16 ***
+dur_binyr11+  -2.135502   0.148353 -14.3947 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+

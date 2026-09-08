@@ -1,0 +1,8 @@
+Spell-onset filter:  10350 raw unbalanced triad-years -> 6277 genuine onsets ( 60.6 %)
+N unbalanced triad-years: 6277 
+
+  flipped dissolved    frozen 
+     4110      1294       873 
+dissolved 20.6% | flipped 65.5% | frozen 13.9%
+
+04_analysis.R complete. See results/model_output.txt

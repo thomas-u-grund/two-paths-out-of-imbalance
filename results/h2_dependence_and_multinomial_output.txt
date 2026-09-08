@@ -1,0 +1,11 @@
+=== (A) Same-sign test, dependence-corrected ===
+137 pairs -> 71 unique dyad-year transitions
+Observed hit rate: 75.2%
+Cluster bootstrap 95% CI: 63 % to 84.5 %
+Cluster-robust logit CI: [ 62.9 %, 84.4 %]
+
+80.1% diagnostic: size-weighted chance baseline = 78.5 % (not 33.3%)
+
+=== (B) Multinomial model ===
+z_tie_emb dissolve: b= -2.354  p= 0 
+z_tie_emb realign:  b= 0.284  p= 2.35e-11 

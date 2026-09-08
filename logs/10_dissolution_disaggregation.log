@@ -1,0 +1,27 @@
+Dissolution events to analyze: 678 
+
+Distribution of how many of the triad's 3 ties disappeared:
+
+  1   2   3 
+407 203  68 
+
+Events with exactly one tie disappearing: 407 of 678 (60.0%)
+
+=== Which type of tie disappears when a spell dissolves? ===
+
+     MID (negative tie) alliance (positive tie) 
+                    326                      81 
+
+     MID (negative tie) alliance (positive tie) 
+              0.8009828               0.1990172 
+
+=== Of tie disappearances, how many coincide with a state exiting the system? ===
+0 of 407 (0.0%)
+
+=== Cross-tab: tie type x state exit ===
+                         
+                          FALSE
+  MID (negative tie)        326
+  alliance (positive tie)    81
+
+10_dissolution_disaggregation.R complete.

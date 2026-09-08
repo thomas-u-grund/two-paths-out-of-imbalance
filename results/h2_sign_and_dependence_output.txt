@@ -1,0 +1,15 @@
+=== (A) Sign-composition ===
+++- configuration Q1 (neg tie has max UL): 96.8 %
+++- configuration Q2 (neg tie actually changes): 97.3 %
+Concordance -- sign only: 0.977  load only: 0.9746  sign+load: 0.9802 
+Same-sign-pair comparison: n=137, higher-load-changed=75.2%
+
+=== (B) Dyad-year dependence ===
+Unique dyad-year transitions: 492 of 5414 triad-events
+Median triads/transition: 10  Max: 46 
+Bootstrap 95% CI (dyad-year clustered): 95.2 % to 97.6 %
+Dyad-year-level collapse hit rate: 80.1 %
+
+=== (C) Net balance gain ===
+Primary test n=2773, hit rate=95.8%
+AIC unbalanced load: 1855.74  AIC net balance gain: 1859.99 

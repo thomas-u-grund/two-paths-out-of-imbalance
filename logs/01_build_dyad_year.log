@@ -1,0 +1,16 @@
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Signed ties built: 63941 
+  positive: 59474  negative: 4467 
+  multiplex (both alliance+MID same year): 0 
+Trade dyad-years: 886828  | overflow (excluded, share>1): 52 (0.01%)
+01_build_dyad_year.R complete.

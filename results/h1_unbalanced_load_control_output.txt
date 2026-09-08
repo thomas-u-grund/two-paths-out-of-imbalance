@@ -1,0 +1,119 @@
+=== Correlation: z_tie_emb vs. z_unbal_load (triad-level, current year) ===
+r = 0.967 
+
+=== REALIGNMENT hazard, baseline (Table 2 spec) ===
+
+z test of coefficients:
+
+               Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)   -0.246421   0.104288  -2.3629   0.01813 *  
+z_tie_btw     -0.027230   0.030624  -0.8892   0.37390    
+z_tie_emb      0.438769   0.046413   9.4535 < 2.2e-16 ***
+z_actor_load   0.219847   0.048758   4.5089 6.515e-06 ***
+z_cinc        -0.200870   0.028159  -7.1335 9.782e-13 ***
+era1945-1989   0.713848   0.105571   6.7618 1.363e-11 ***
+erapost-1989   0.744920   0.110599   6.7353 1.635e-11 ***
+dur_binyr2    -0.117896   0.053187  -2.2166   0.02665 *  
+dur_binyr3    -0.937658   0.084367 -11.1141 < 2.2e-16 ***
+dur_binyr4-5  -1.492359   0.085527 -17.4490 < 2.2e-16 ***
+dur_binyr6-10 -1.871685   0.099657 -18.7813 < 2.2e-16 ***
+dur_binyr11+  -1.737190   0.114113 -15.2234 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+N = 10170 
+
+=== REALIGNMENT hazard, + triad-level current unbalanced load ===
+
+z test of coefficients:
+
+               Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)   -0.237302   0.103676  -2.2889   0.02209 *  
+z_tie_btw     -0.011581   0.029812  -0.3885   0.69767    
+z_tie_emb     -0.297282   0.132625  -2.2415   0.02499 *  
+z_actor_load   0.204626   0.048130   4.2516 2.123e-05 ***
+z_cinc        -0.221754   0.027825  -7.9696 1.592e-15 ***
+era1945-1989   0.711096   0.105015   6.7714 1.276e-11 ***
+erapost-1989   0.725336   0.110402   6.5700 5.032e-11 ***
+dur_binyr2    -0.104391   0.053349  -1.9568   0.05038 .  
+dur_binyr3    -0.921490   0.084112 -10.9556 < 2.2e-16 ***
+dur_binyr4-5  -1.471256   0.085814 -17.1448 < 2.2e-16 ***
+dur_binyr6-10 -1.886047   0.100488 -18.7688 < 2.2e-16 ***
+dur_binyr11+  -1.784152   0.111489 -16.0029 < 2.2e-16 ***
+z_unbal_load   0.748569   0.119591   6.2594 3.864e-10 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+N = 10170 
+
+=== LRT: does adding current unbalanced load improve fit (realignment)? ===
+Analysis of Deviance Table
+
+Model 1: event_flip ~ z_tie_btw + z_tie_emb + z_actor_load + z_cinc + 
+    era + dur_bin
+Model 2: event_flip ~ z_tie_btw + z_tie_emb + z_actor_load + z_cinc + 
+    era + dur_bin + z_unbal_load
+  Resid. Df Resid. Dev Df Deviance  Pr(>Chi)    
+1     10158      12691                          
+2     10157      12622  1   68.732 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+=== DISSOLUTION hazard, baseline (Table 2 spec) ===
+
+z test of coefficients:
+
+               Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)   -4.019768   0.261082 -15.3966 < 2.2e-16 ***
+z_tie_btw      0.025818   0.053633   0.4814 0.6302487    
+z_tie_emb     -2.507699   0.161379 -15.5392 < 2.2e-16 ***
+z_actor_load  -0.496096   0.089113  -5.5670 2.591e-08 ***
+z_cinc         0.529255   0.083349   6.3499 2.155e-10 ***
+era1945-1989  -0.351165   0.200816  -1.7487 0.0803447 .  
+erapost-1989  -0.858413   0.237245  -3.6183 0.0002966 ***
+dur_binyr2    -0.403381   0.147741  -2.7303 0.0063272 ** 
+dur_binyr3     0.826684   0.202784   4.0767 4.568e-05 ***
+dur_binyr4-5  -1.787769   0.406077  -4.4025 1.070e-05 ***
+dur_binyr6-10 -1.750188   0.410933  -4.2591 2.053e-05 ***
+dur_binyr11+  -2.598030   0.958698  -2.7100 0.0067292 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+N = 10170 
+
+=== DISSOLUTION hazard, + triad-level current unbalanced load ===
+
+z test of coefficients:
+
+               Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)   -3.942468   0.250660 -15.7283 < 2.2e-16 ***
+z_tie_btw     -0.028381   0.055770  -0.5089  0.610824    
+z_tie_emb     -0.977694   0.301580  -3.2419  0.001187 ** 
+z_actor_load  -0.468325   0.082679  -5.6644 1.476e-08 ***
+z_cinc         0.495967   0.079192   6.2628 3.781e-10 ***
+era1945-1989  -0.558237   0.200949  -2.7780  0.005469 ** 
+erapost-1989  -0.998238   0.226966  -4.3982 1.092e-05 ***
+dur_binyr2    -0.408754   0.148115  -2.7597  0.005785 ** 
+dur_binyr3     0.904441   0.209965   4.3076 1.651e-05 ***
+dur_binyr4-5  -1.763471   0.405017  -4.3541 1.336e-05 ***
+dur_binyr6-10 -1.628963   0.387848  -4.2000 2.669e-05 ***
+dur_binyr11+  -2.444786   0.793873  -3.0796  0.002073 ** 
+z_unbal_load  -1.595343   0.271234  -5.8818 4.058e-09 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+N = 10170 
+
+=== LRT: does adding current unbalanced load improve fit (dissolution)? ===
+Analysis of Deviance Table
+
+Model 1: event_dissolve ~ z_tie_btw + z_tie_emb + z_actor_load + z_cinc + 
+    era + dur_bin
+Model 2: event_dissolve ~ z_tie_btw + z_tie_emb + z_actor_load + z_cinc + 
+    era + dur_bin + z_unbal_load
+  Resid. Df Resid. Dev Df Deviance  Pr(>Chi)    
+1     10158     2732.5                          
+2     10157     2661.3  1   71.213 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1

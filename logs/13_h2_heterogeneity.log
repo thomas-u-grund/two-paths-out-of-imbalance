@@ -1,0 +1,112 @@
+Strict (all 3 unbalanced-load values distinct) sample: 2516 
+
+=== Triad configuration at t1 (before change) ===
+
+   two_pos_one_neg zero_pos_three_neg 
+              2511                  5 
+
+=== Changed tie type ===
+
+alliance (pos->neg)  dispute (neg->pos) 
+                 67                2449 
+
+=== Heterogeneity by changed-tie type ===
+# A tibble: 3 × 6
+  group                          n hit_rate ci_low ci_high   p_value
+  <chr>                      <int>    <dbl>  <dbl>   <dbl>     <dbl>
+1 All events                  2516    0.966 0.958    0.973 0        
+2 Alliance events (pos->neg)    67    0.119 0.0530   0.222 0.0000801
+3 Dispute events (neg->pos)   2449    0.989 0.984    0.993 0        
+
+2x2 table (rows=tie type, cols=hit):
+# A tibble: 2 × 3
+  changed_tie_type    `FALSE` `TRUE`
+  <chr>                 <int>  <int>
+1 alliance (pos->neg)      59      8
+2 dispute (neg->pos)       27   2422
+Warning message:
+In prop.test(x = c(sum(strict$is_max_ul[strict$changed_tie_type ==  :
+  Chi-squared approximation may be incorrect
+
+=== Formal test: hit rate, alliance vs. dispute events ===
+
+	2-sample test for equality of proportions with continuity correction
+
+data:  c(sum(strict$is_max_ul[strict$changed_tie_type == "alliance (pos->neg)"]), sum(strict$is_max_ul[strict$changed_tie_type == "dispute (neg->pos)"])) out of c(sum(strict$changed_tie_type == "alliance (pos->neg)"), sum(strict$changed_tie_type == "dispute (neg->pos)"))
+X-squared = 1467.5, df = 1, p-value < 2.2e-16
+alternative hypothesis: two.sided
+95 percent confidence interval:
+ -0.9549928 -0.7841514
+sample estimates:
+   prop 1    prop 2 
+0.1194030 0.9889751 
+
+
+=== Cross-tab: triad configuration x changed-tie type x hit rate ===
+# A tibble: 3 × 4
+  triad_config       changed_tie_type        n hit_rate
+  <chr>              <chr>               <int>    <dbl>
+1 two_pos_one_neg    alliance (pos->neg)    67    0.119
+2 two_pos_one_neg    dispute (neg->pos)   2444    0.990
+3 zero_pos_three_neg dispute (neg->pos)      5    0.6  
+
+Person-tie rows for interaction model: 16242  | events: 5414 
+
+=== Conditional logit: main effects (unbalanced load + tie type) ===
+Call:
+coxph(formula = Surv(rep(1, 16242L), changed) ~ unbal_load + 
+    tie_type_alliance + strata(event_id), data = long, method = "exact")
+
+  n= 16242, number of events= 5414 
+
+                      coef exp(coef) se(coef)      z Pr(>|z|)    
+unbal_load         0.12961   1.13838  0.01129  11.48   <2e-16 ***
+tie_type_alliance -2.43920   0.08723  0.14311 -17.04   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+                  exp(coef) exp(-coef) lower .95 upper .95
+unbal_load          1.13838     0.8784   1.11347    1.1639
+tie_type_alliance   0.08723    11.4639   0.06589    0.1155
+
+Concordance= 0.98  (se = 0.002 )
+Likelihood ratio test= 10435  on 2 df,   p=<2e-16
+Wald test            = 2096  on 2 df,   p=<2e-16
+Score (logrank) test = 9921  on 2 df,   p=<2e-16
+
+
+=== Conditional logit: unbalanced load x tie-type interaction ===
+Call:
+coxph(formula = Surv(rep(1, 16242L), changed) ~ unbal_load * 
+    tie_type_alliance + strata(event_id), data = long, method = "exact")
+
+  n= 16242, number of events= 5414 
+
+                                 coef exp(coef) se(coef)       z Pr(>|z|)    
+unbal_load                    0.13211   1.14123  0.01230  10.743   <2e-16 ***
+tie_type_alliance            -2.38457   0.09213  0.17622 -13.532   <2e-16 ***
+unbal_load:tie_type_alliance -0.02314   0.97712  0.04442  -0.521    0.602    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+                             exp(coef) exp(-coef) lower .95 upper .95
+unbal_load                     1.14123     0.8762   1.11406    1.1691
+tie_type_alliance              0.09213    10.8544   0.06522    0.1301
+unbal_load:tie_type_alliance   0.97712     1.0234   0.89565    1.0660
+
+Concordance= 0.98  (se = 0.002 )
+Likelihood ratio test= 10435  on 3 df,   p=<2e-16
+Wald test            = 2092  on 3 df,   p=<2e-16
+Score (logrank) test = 9921  on 3 df,   p=<2e-16
+
+
+Likelihood ratio test, main-effects vs. interaction model:
+Analysis of Deviance Table
+ Cox model: response is  Surv(rep(1, 16242L), changed)
+ Model 1: ~ unbal_load + tie_type_alliance + strata(event_id)
+ Model 2: ~ unbal_load * tie_type_alliance + strata(event_id)
+   loglik Chisq Df Pr(>|Chi|)
+1 -730.30                    
+2 -730.16 0.278  1      0.598
+
+13_h2_heterogeneity.R complete. See results/h2_heterogeneity_output.txt

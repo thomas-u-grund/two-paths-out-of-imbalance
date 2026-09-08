@@ -1,0 +1,29 @@
+% Local minimal compatibility shim for the CTAN `endnotes` package.
+% NOT the genuine upstream file -- written locally because this machine's
+% TeX Live installation ("2025basic" scheme) lacks endnotes.sty and has no
+% writable system tree to install it into (tlmgr requires root; usermode
+% install is blocked by a repository version mismatch). sagej.cls has a
+% hard \RequirePackage{endnotes} and redefines several of its hooks
+% (\enotesize, \enoteheading, \enoteformat) via \def/\renewcommand, so
+% this shim exists only to satisfy that dependency at class-load time.
+% This paper does not call \endnote{} anywhere, so \endnote/\theendnotes
+% below are inert stubs, not a working implementation.
+%
+% Note: on this TeX Live 2025 kernel, \newcommand{\endnote}... itself
+% fails ("Command \endnote already defined") even in a bare article.cls
+% document with nothing else loaded -- the modern LaTeX2e kernel reserves
+% the name. Everything here therefore uses plain \def, which does not
+% check prior definition state, sidestepping that reservation. (The
+% genuine upstream endnotes package, which uses \newcommand, would hit
+% the same wall on this kernel.)
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{endnotes}[2026/01/01 local minimal shim]
+
+\def\theenmark{}
+\def\@theenmark{}
+\def\notesname{Notes}
+\def\enotesize{\footnotesize}
+\def\enoteheading{\section*{\notesname}}
+\def\enoteformat{}
+\def\endnote#1{\relax}
+\def\theendnotes{\relax}

@@ -1,0 +1,4 @@
+.DS_Store
+manuscript/latex/*.aux
+manuscript/latex/*.log
+manuscript/latex/*.out

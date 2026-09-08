@@ -1,0 +1,47 @@
+=== Weak-balance robustness: DISSOLUTION hazard ===
+
+z test of coefficients:
+
+              Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)  -4.537708   0.305055 -14.8751 < 2.2e-16 ***
+z_tie_btw    -0.043042   0.067265  -0.6399  0.522245    
+z_tie_emb    -2.428354   0.186578 -13.0152 < 2.2e-16 ***
+z_actor_load -0.691533   0.134273  -5.1502 2.602e-07 ***
+z_cinc        0.543387   0.092301   5.8871 3.930e-09 ***
+era1945-1989  0.029950   0.251573   0.1191  0.905234    
+erapost-1989 -0.817082   0.292687  -2.7917  0.005244 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+N = 9878 
+
+=== Weak-balance robustness: FLIP-TO-BALANCE (realignment) hazard ===
+
+z test of coefficients:
+
+              Estimate Std. Error z value  Pr(>|z|)    
+(Intercept)  -0.446938   0.153089 -2.9195  0.003506 ** 
+z_tie_btw     0.003717   0.040357  0.0921  0.926616    
+z_tie_emb     0.469400   0.064583  7.2681 3.645e-13 ***
+z_actor_load  0.355578   0.068701  5.1757 2.270e-07 ***
+z_cinc       -0.168453   0.034333 -4.9065 9.273e-07 ***
+era1945-1989  0.688075   0.156691  4.3913 1.127e-05 ***
+erapost-1989  0.646551   0.164622  3.9275 8.584e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+N = 9878 
+
+=== Side-by-side: strong balance (paper) vs. weak balance (this check) ===
+
+--- Dissolution hazard ---
+  z_tie_btw      strong: b=-0.0031 p=0.9604   |   weak: b=-0.0430 p=0.5222
+  z_tie_emb      strong: b=-2.4549 p=0.0000   |   weak: b=-2.4284 p=0.0000
+  z_actor_load   strong: b=-0.4877 p=0.0000   |   weak: b=-0.6915 p=0.0000
+  z_cinc         strong: b= 0.5542 p=0.0000   |   weak: b= 0.5434 p=0.0000
+
+--- Flip-to-balance (realignment) hazard ---
+  z_tie_btw      strong: b=-0.0230 p=0.5390   |   weak: b= 0.0037 p=0.9266
+  z_tie_emb      strong: b= 0.4436 p=0.0000   |   weak: b= 0.4694 p=0.0000
+  z_actor_load   strong: b= 0.2807 p=0.0000   |   weak: b= 0.3556 p=0.0000
+  z_cinc         strong: b=-0.2035 p=0.0000   |   weak: b=-0.1685 p=0.0000

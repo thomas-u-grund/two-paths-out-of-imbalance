@@ -1,0 +1,14 @@
+Total sim time: 428.9 sec
+Year 1914: 33 nodes, 69 edges, 64 triangles
+  Model A final -- balanced: 100.0% | unbalanced: 0.0% | dissolved: 0.0%
+  Model B final -- balanced: 76.0% | unbalanced: 0.0% | dissolved: 24.0%
+Year 1949: 63 nodes, 349 edges, 1631 triangles
+  Model A final -- balanced: 67.0% | unbalanced: 33.0% | dissolved: 0.0%
+  Model B final -- balanced: 68.9% | unbalanced: 28.8% | dissolved: 2.3%
+Year 1985: 126 nodes, 1012 edges, 6985 triangles
+  Model A final -- balanced: 58.7% | unbalanced: 41.3% | dissolved: 0.0%
+  Model B final -- balanced: 60.7% | unbalanced: 35.8% | dissolved: 3.5%
+Year 2005: 147 nodes, 1238 edges, 8898 triangles
+  Model A final -- balanced: 55.3% | unbalanced: 44.7% | dissolved: 0.0%
+  Model B final -- balanced: 71.7% | unbalanced: 20.2% | dissolved: 8.1%
+05_abm_robustness.R complete.

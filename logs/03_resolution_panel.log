@@ -1,0 +1,8 @@
+Unbalanced triad-years (starting points): 10355 
+Of 10355 unbalanced triad-years:
+  still a closed triad 5y later: 8408 
+  resolved to balance (of those still closed): 6516 
+  dissolved (no longer closed triad) at t+5: 1947 
+Main analysis sample (still-closed at t+5): 8408 
+Resolution rate: 77.5 %
+03_resolution_panel.R complete.

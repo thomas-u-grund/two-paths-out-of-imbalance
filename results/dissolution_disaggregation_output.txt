@@ -1,0 +1,18 @@
+Dissolution events: 678  | single-tie-disappearance: 407 (60.0%)
+
+Tie type that disappeared:
+
+     MID (negative tie) alliance (positive tie) 
+                    326                      81 
+
+     MID (negative tie) alliance (positive tie) 
+                   80.1                    19.9 
+
+Coincides with a state exiting the interstate system:
+0 of 407 (0.0%)
+
+Cross-tab (tie type x state exit):
+                         
+                          FALSE
+  MID (negative tie)        326
+  alliance (positive tie)    81

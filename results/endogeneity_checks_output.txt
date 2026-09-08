@@ -1,0 +1,170 @@
+=== Lagged-covariate check ===
+Rows lacking a t-1 value: 824 of 10170 
+Sample used: 9346 triad-years
+
+--- DISSOLUTION ---
+
+z test of coefficients:
+
+               Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)   -4.311191   0.345669 -12.4720 < 2.2e-16 ***
+z_tie_btw     -0.015667   0.062413  -0.2510 0.8018044    
+z_tie_emb     -2.147717   0.207414 -10.3548 < 2.2e-16 ***
+z_actor_load  -0.444575   0.130295  -3.4121 0.0006447 ***
+z_cinc         0.564666   0.117705   4.7973 1.608e-06 ***
+era1945-1989  -0.210729   0.296048  -0.7118 0.4765845    
+erapost-1989  -1.480996   0.324805  -4.5596 5.124e-06 ***
+dur_binyr2     0.295282   0.151623   1.9475 0.0514782 .  
+dur_binyr3     1.523133   0.200482   7.5974 3.022e-14 ***
+dur_binyr4-5  -0.812980   0.428385  -1.8978 0.0577252 .  
+dur_binyr6-10 -0.686113   0.419402  -1.6359 0.1018538    
+dur_binyr11+  -1.331065   0.971657  -1.3699 0.1707208    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+
+z test of coefficients:
+
+                  Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)      -4.658206   0.368157 -12.6528 < 2.2e-16 ***
+z_tie_btw_lag    -0.013003   0.064804  -0.2006  0.840975    
+z_tie_emb_lag    -1.970677   0.181453 -10.8605 < 2.2e-16 ***
+z_actor_load_lag -0.346403   0.113442  -3.0536  0.002261 ** 
+z_cinc_lag        0.592432   0.116056   5.1047 3.313e-07 ***
+era1945-1989     -0.123492   0.302353  -0.4084  0.682955    
+erapost-1989     -1.313137   0.337253  -3.8936 9.876e-05 ***
+dur_binyr2        0.311931   0.151130   2.0640  0.039018 *  
+dur_binyr3        1.547254   0.200803   7.7053 1.305e-14 ***
+dur_binyr4-5     -0.821128   0.427516  -1.9207  0.054770 .  
+dur_binyr6-10    -0.723997   0.432106  -1.6755  0.093835 .  
+dur_binyr11+     -1.340050   0.972691  -1.3777  0.168304    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+--- REALIGNMENT ---
+
+z test of coefficients:
+
+               Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)    0.133810   0.108003   1.2389    0.2154    
+z_tie_btw      0.031168   0.037010   0.8421    0.3997    
+z_tie_emb      0.336663   0.060658   5.5502 2.854e-08 ***
+z_actor_load   0.272938   0.070130   3.8919 9.947e-05 ***
+z_cinc        -0.181939   0.027128  -6.7067 1.991e-11 ***
+era1945-1989   0.467498   0.106709   4.3811 1.181e-05 ***
+erapost-1989   0.556184   0.113447   4.9026 9.459e-07 ***
+dur_binyr2    -0.288331   0.054323  -5.3077 1.110e-07 ***
+dur_binyr3    -1.071215   0.085619 -12.5113 < 2.2e-16 ***
+dur_binyr4-5  -1.607055   0.084324 -19.0582 < 2.2e-16 ***
+dur_binyr6-10 -2.011600   0.101227 -19.8721 < 2.2e-16 ***
+dur_binyr11+  -2.015507   0.124213 -16.2262 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+
+z test of coefficients:
+
+                  Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)       0.180230   0.109896   1.6400    0.1010    
+z_tie_btw_lag     0.034159   0.032763   1.0426    0.2971    
+z_tie_emb_lag     0.305964   0.050993   6.0001 1.972e-09 ***
+z_actor_load_lag  0.219564   0.054034   4.0635 4.835e-05 ***
+z_cinc_lag       -0.168106   0.024983  -6.7287 1.712e-11 ***
+era1945-1989      0.451930   0.107164   4.2172 2.474e-05 ***
+erapost-1989      0.531746   0.114123   4.6594 3.171e-06 ***
+dur_binyr2       -0.287972   0.054462  -5.2876 1.239e-07 ***
+dur_binyr3       -1.063485   0.085630 -12.4196 < 2.2e-16 ***
+dur_binyr4-5     -1.607278   0.084472 -19.0272 < 2.2e-16 ***
+dur_binyr6-10    -2.011139   0.101065 -19.8995 < 2.2e-16 ***
+dur_binyr11+     -2.008254   0.122776 -16.3570 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+
+=== Cinelli-Hazlett sensitivity bounds (LPM approximation) ===
+
+--- DISSOLUTION ---
+Sensitivity Analysis to Unobserved Confounding
+
+Model Formula: event_dissolve ~ z_tie_btw + z_tie_emb + z_actor_load + z_cinc + 
+    era + dur_bin
+
+Null hypothesis: q = 1 and reduce = TRUE 
+-- This means we are considering biases that reduce the absolute value of the current estimate.
+-- The null hypothesis deemed problematic is H0:tau = 0 
+
+Unadjusted Estimates of 'z_tie_emb': 
+  Coef. estimate: -0.0768 
+  Standard Error: 0.0039 
+  t-value (H0:tau = 0): -19.6922 
+
+Sensitivity Statistics:
+  Partial R2 of treatment with outcome: 0.0368 
+  Robustness Value, q = 1: 0.1772 
+  Robustness Value, q = 1, alpha = 0.05: 0.1611 
+
+Verbal interpretation of sensitivity statistics:
+
+-- Partial R2 of the treatment with the outcome: an extreme confounder (orthogonal to the covariates) that explains 100% of the residual variance of the outcome, would need to explain at least 3.68% of the residual variance of the treatment to fully account for the observed estimated effect.
+
+-- Robustness Value, q = 1: unobserved confounders (orthogonal to the covariates) that explain more than 17.72% of the residual variance of both the treatment and the outcome are strong enough to bring the point estimate to 0 (a bias of 100% of the original estimate). Conversely, unobserved confounders that do not explain more than 17.72% of the residual variance of both the treatment and the outcome are not strong enough to bring the point estimate to 0.
+
+-- Robustness Value, q = 1, alpha = 0.05: unobserved confounders (orthogonal to the covariates) that explain more than 16.11% of the residual variance of both the treatment and the outcome are strong enough to bring the estimate to a range where it is no longer 'statistically different' from 0 (a bias of 100% of the original estimate), at the significance level of alpha = 0.05. Conversely, unobserved confounders that do not explain more than 16.11% of the residual variance of both the treatment and the outcome are not strong enough to bring the estimate to a range where it is no longer 'statistically different' from 0, at the significance level of alpha = 0.05.
+
+Bounds on omitted variable bias:
+
+--The table below shows the maximum strength of unobserved confounders with association with the treatment and the outcome bounded by a multiple of the observed explanatory power of the chosen benchmark covariate(s).
+
+ Bound Label R2dz.x R2yz.dx Treatment Adjusted Estimate Adjusted Se Adjusted T
+   1x z_cinc  0.172  0.0267 z_tie_emb           -0.0475      0.0042   -11.2367
+ Adjusted Lower CI Adjusted Upper CI
+           -0.0558           -0.0392
+  Bound Label R2dz.x R2yz.dx Treatment Adjusted Estimate Adjusted Se Adjusted T
+1   1x z_cinc  0.172  0.0267 z_tie_emb           -0.0475      0.0042   -11.2367
+  Adjusted Lower CI Adjusted Upper CI
+1           -0.0558           -0.0392
+
+--- REALIGNMENT ---
+Sensitivity Analysis to Unobserved Confounding
+
+Model Formula: event_flip ~ z_tie_btw + z_tie_emb + z_actor_load + z_cinc + 
+    era + dur_bin
+
+Null hypothesis: q = 1 and reduce = TRUE 
+-- This means we are considering biases that reduce the absolute value of the current estimate.
+-- The null hypothesis deemed problematic is H0:tau = 0 
+
+Unadjusted Estimates of 'z_tie_emb': 
+  Coef. estimate: 0.0966 
+  Standard Error: 0.0084 
+  t-value (H0:tau = 0): 11.5263 
+
+Sensitivity Statistics:
+  Partial R2 of treatment with outcome: 0.0129 
+  Robustness Value, q = 1: 0.108 
+  Robustness Value, q = 1, alpha = 0.05: 0.0905 
+
+Verbal interpretation of sensitivity statistics:
+
+-- Partial R2 of the treatment with the outcome: an extreme confounder (orthogonal to the covariates) that explains 100% of the residual variance of the outcome, would need to explain at least 1.29% of the residual variance of the treatment to fully account for the observed estimated effect.
+
+-- Robustness Value, q = 1: unobserved confounders (orthogonal to the covariates) that explain more than 10.8% of the residual variance of both the treatment and the outcome are strong enough to bring the point estimate to 0 (a bias of 100% of the original estimate). Conversely, unobserved confounders that do not explain more than 10.8% of the residual variance of both the treatment and the outcome are not strong enough to bring the point estimate to 0.
+
+-- Robustness Value, q = 1, alpha = 0.05: unobserved confounders (orthogonal to the covariates) that explain more than 9.05% of the residual variance of both the treatment and the outcome are strong enough to bring the estimate to a range where it is no longer 'statistically different' from 0 (a bias of 100% of the original estimate), at the significance level of alpha = 0.05. Conversely, unobserved confounders that do not explain more than 9.05% of the residual variance of both the treatment and the outcome are not strong enough to bring the estimate to a range where it is no longer 'statistically different' from 0, at the significance level of alpha = 0.05.
+
+Bounds on omitted variable bias:
+
+--The table below shows the maximum strength of unobserved confounders with association with the treatment and the outcome bounded by a multiple of the observed explanatory power of the chosen benchmark covariate(s).
+
+ Bound Label R2dz.x R2yz.dx Treatment Adjusted Estimate Adjusted Se Adjusted T
+   1x z_cinc  0.172  0.0089 z_tie_emb            0.0602      0.0092     6.5669
+ Adjusted Lower CI Adjusted Upper CI
+            0.0422            0.0782
+  Bound Label R2dz.x R2yz.dx Treatment Adjusted Estimate Adjusted Se Adjusted T
+1   1x z_cinc  0.172  0.0089 z_tie_emb            0.0602      0.0092     6.5669
+  Adjusted Lower CI Adjusted Upper CI
+1            0.0422            0.0782

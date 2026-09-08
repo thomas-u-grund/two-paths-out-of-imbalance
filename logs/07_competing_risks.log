@@ -1,0 +1,14 @@
+Person-year candidate rows (all unbalanced triad-years): 10350 
+Unique spells: 6277 
+
+Spell terminal events:
+
+censored_end_of_panel             dissolved               flipped 
+                  180                   678                  5419 
+
+Usable person-year rows (transition to Y+1 observed): 10170 
+
+continues dissolved   flipped 
+     4073       678      5419 
+
+07_competing_risks.R complete. See results/competing_risks_output.txt

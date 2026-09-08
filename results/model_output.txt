@@ -1,0 +1,211 @@
+=== Outcome distribution ===
+
+  flipped dissolved    frozen 
+     4110      1294       873 
+
+=== Multinomial logit, descriptive only (ref = flipped) ===
+(Reported for completeness; the two-equation decomposition below is
+ the primary specification -- see DECISIONS.md D19.)
+
+-- Coefficients --
+          (Intercept) z_tie_btw z_tie_emb I(z_tie_emb^2) z_actor_load z_cinc
+dissolved      -1.172    -0.071    -1.709          0.575       -0.994  0.436
+frozen         -1.417    -0.155    -0.303         -0.012       -0.158  0.236
+          era1945-1989 erapost-1989
+dissolved       -1.466       -0.609
+frozen           0.044       -0.249
+
+-- p-values --
+          (Intercept) z_tie_btw z_tie_emb I(z_tie_emb^2) z_actor_load z_cinc
+dissolved           0    0.1009    0.0000          0.000       0.0000      0
+frozen              0    0.0132    0.0016          0.826       0.0684      0
+          era1945-1989 erapost-1989
+dissolved        0.000       0.0018
+frozen           0.858       0.3161
+
+N = 6277  AIC = 8854.952 
+
+
+=== PRIMARY H1a: dissolved vs flipped — linear ===
+
+z test of coefficients:
+
+              Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)  -0.519665   0.166862  -3.1143  0.001844 ** 
+z_tie_btw     0.045407   0.046378   0.9791  0.327555    
+z_tie_emb    -1.476946   0.090939 -16.2411 < 2.2e-16 ***
+z_actor_load -0.608968   0.085615  -7.1129 1.136e-12 ***
+z_cinc        0.591380   0.058215  10.1585 < 2.2e-16 ***
+era1945-1989 -1.778881   0.168486 -10.5580 < 2.2e-16 ***
+erapost-1989 -0.718276   0.168311  -4.2676 1.976e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+
+=== PRIMARY H1a: dissolved vs flipped — quadratic ===
+
+z test of coefficients:
+
+                Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)    -1.364154   0.191883  -7.1093 1.166e-12 ***
+z_tie_btw      -0.016217   0.056196  -0.2886   0.77290    
+z_tie_emb      -1.815023   0.107670 -16.8573 < 2.2e-16 ***
+I(z_tie_emb^2)  0.650742   0.056936  11.4294 < 2.2e-16 ***
+z_actor_load   -1.040366   0.110840  -9.3862 < 2.2e-16 ***
+z_cinc          0.392089   0.057125   6.8637 6.710e-12 ***
+era1945-1989   -1.388014   0.188507  -7.3632 1.796e-13 ***
+erapost-1989   -0.465766   0.190104  -2.4501   0.01428 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+LRT linear vs quadratic (dissolved vs flipped):
+Analysis of Deviance Table
+
+Model 1: I(outcome == "dissolved") ~ z_tie_btw + z_tie_emb + z_actor_load + 
+    z_cinc + era
+Model 2: I(outcome == "dissolved") ~ z_tie_btw + z_tie_emb + I(z_tie_emb^2) + 
+    z_actor_load + z_cinc + era
+  Resid. Df Resid. Dev Df Deviance  Pr(>Chi)    
+1      5397     4047.1                          
+2      5396     3860.4  1   186.75 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+=== PRIMARY H1b: frozen vs flipped — linear ===
+
+z test of coefficients:
+
+              Estimate Std. Error z value  Pr(>|z|)    
+(Intercept)  -1.458819   0.270656 -5.3899 7.049e-08 ***
+z_tie_btw    -0.206489   0.108661 -1.9003   0.05739 .  
+z_tie_emb    -0.369432   0.088862 -4.1574 3.219e-05 ***
+z_actor_load -0.227196   0.097571 -2.3285   0.01988 *  
+z_cinc        0.262846   0.055729  4.7165 2.400e-06 ***
+era1945-1989  0.087850   0.282695  0.3108   0.75598    
+erapost-1989 -0.226372   0.279090 -0.8111   0.41730    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+
+=== PRIMARY H1b: frozen vs flipped — quadratic ===
+
+z test of coefficients:
+
+                 Estimate Std. Error z value  Pr(>|z|)    
+(Intercept)    -1.4680596  0.2802453 -5.2385 1.619e-07 ***
+z_tie_btw      -0.2081090  0.1064539 -1.9549  0.050592 .  
+z_tie_emb      -0.3774089  0.1162936 -3.2453  0.001173 ** 
+I(z_tie_emb^2)  0.0077468  0.0617117  0.1255  0.900102    
+z_actor_load   -0.2338806  0.1122084 -2.0843  0.037129 *  
+z_cinc          0.2613592  0.0588769  4.4391 9.034e-06 ***
+era1945-1989    0.0931477  0.2855195  0.3262  0.744243    
+erapost-1989   -0.2252863  0.2796836 -0.8055  0.420529    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+LRT linear vs quadratic (frozen vs flipped):
+Analysis of Deviance Table
+
+Model 1: I(outcome == "frozen") ~ z_tie_btw + z_tie_emb + z_actor_load + 
+    z_cinc + era
+Model 2: I(outcome == "frozen") ~ z_tie_btw + z_tie_emb + I(z_tie_emb^2) + 
+    z_actor_load + z_cinc + era
+  Resid. Df Resid. Dev Df Deviance Pr(>Chi)
+1      4976     4522.8                     
+2      4975     4522.7  1 0.018887   0.8907
+
+
+=== [Descriptive only, D19] Pooled frozen-vs-rest quadratic model ===
+(used only to generate Fig. 2's descriptive P(frozen) curve; NOT
+ interpreted as a direct nonlinear mechanism -- see DECISIONS.md D19)
+                 Estimate Std. Error   z value     Pr(>|z|)
+(Intercept)    -2.2454678 0.23591367 -9.518176 1.762449e-21
+z_tie_btw      -0.1392491 0.05905617 -2.357910 1.837816e-02
+z_tie_emb       0.3312922 0.08278544  4.001817 6.285788e-05
+I(z_tie_emb^2) -0.3190897 0.05166426 -6.176217 6.565563e-10
+z_actor_load    0.2809891 0.07129394  3.941276 8.104945e-05
+z_cinc          0.1977854 0.04972176  3.977843 6.954318e-05
+era1945-1989    0.8847249 0.23157755  3.820426 1.332212e-04
+erapost-1989    0.5217647 0.23235666  2.245534 2.473389e-02
+
+
+=== H2: lowest-load tie predicts flip-not-freeze ===
+
+z test of coefficients:
+
+               Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)   0.0096074  0.1358853   0.0707   0.94363    
+z_min_tie     0.3595842  0.0336860  10.6746 < 2.2e-16 ***
+z_actor_load -0.0853110  0.0348348  -2.4490   0.01432 *  
+z_cinc       -0.8613005  0.0409892 -21.0129 < 2.2e-16 ***
+era1945-1989  0.8819431  0.1434163   6.1495 7.771e-10 ***
+erapost-1989  0.6303012  0.1461132   4.3138 1.605e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+
+=== H3: actor load, frozen vs flipped (conditional) ===
+
+z test of coefficients:
+
+              Estimate Std. Error z value  Pr(>|z|)    
+(Intercept)  -1.564263   0.278801 -5.6107 2.015e-08 ***
+z_actor_load  0.067673   0.045757  1.4790    0.1392    
+z_cinc        0.276154   0.049367  5.5939 2.221e-08 ***
+era1945-1989  0.227321   0.291229  0.7806    0.4351    
+erapost-1989 -0.185027   0.291756 -0.6342    0.5260    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+
+=== H3: actor load, frozen vs flipped (unconditional/bivariate) ===
+
+z test of coefficients:
+
+              Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)  -1.543772   0.045203 -34.1523 < 2.2e-16 ***
+z_actor_load  0.093064   0.035568   2.6165  0.008884 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+
+=== H3 (extension): actor load, dissolved vs flipped ===
+
+z test of coefficients:
+
+              Estimate Std. Error z value  Pr(>|z|)    
+(Intercept)  -0.545065   0.139423 -3.9094 9.251e-05 ***
+z_actor_load  0.291285   0.046761  6.2292 4.689e-10 ***
+z_cinc        1.115963   0.054972 20.3007 < 2.2e-16 ***
+era1945-1989 -1.497166   0.151051 -9.9117 < 2.2e-16 ***
+erapost-1989 -0.603980   0.148567 -4.0654 4.796e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+
+=== Robustness: trade-based tie load, 1870-2012 subsample, frozen vs flipped ===
+
+z test of coefficients:
+
+               Estimate Std. Error z value  Pr(>|z|)    
+(Intercept)  -1.3321873  0.3721944 -3.5793 0.0003445 ***
+z_trade      -0.2371347  0.0564141 -4.2035 2.629e-05 ***
+z_tie_emb    -0.1317011  0.0868031 -1.5172 0.1292061    
+z_actor_load -0.0176799  0.0818854 -0.2159 0.8290580    
+z_cinc        0.3204062  0.0595665  5.3790 7.491e-08 ***
+era1945-1989 -0.0089692  0.3805236 -0.0236 0.9811950    
+erapost-1989 -0.3818235  0.3817289 -1.0002 0.3171906    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+N = 4858 

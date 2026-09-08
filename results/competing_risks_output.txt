@@ -1,0 +1,57 @@
+=== Person-year risk table ===
+Rows: 10170  | unique spells: 6176 
+
+continues dissolved   flipped 
+     4073       678      5419 
+
+
+=== Cause-specific hazard: DISSOLUTION (event_dissolve ~ ...) ===
+
+z test of coefficients:
+
+               Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)  -4.0585909  0.2699262 -15.0359 < 2.2e-16 ***
+z_tie_btw    -0.0031159  0.0626972  -0.0497    0.9604    
+z_tie_emb    -2.4548586  0.1641100 -14.9586 < 2.2e-16 ***
+z_actor_load -0.4877026  0.0921462  -5.2927 1.205e-07 ***
+z_cinc        0.5542110  0.0874673   6.3362 2.355e-10 ***
+era1945-1989 -0.3406393  0.2137101  -1.5939    0.1110    
+erapost-1989 -1.0134735  0.2462187  -4.1162 3.853e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+N = 10170 
+
+
+=== Cause-specific hazard: FLIP TO BALANCE (event_flip ~ ...) ===
+
+z test of coefficients:
+
+              Estimate Std. Error z value  Pr(>|z|)    
+(Intercept)  -0.620396   0.130049 -4.7705 1.838e-06 ***
+z_tie_btw    -0.022995   0.037428 -0.6144     0.539    
+z_tie_emb     0.443567   0.058411  7.5938 3.106e-14 ***
+z_actor_load  0.280651   0.057090  4.9160 8.834e-07 ***
+z_cinc       -0.203492   0.034412 -5.9134 3.350e-09 ***
+era1945-1989  0.825793   0.134159  6.1553 7.493e-10 ***
+erapost-1989  0.773468   0.143751  5.3806 7.423e-08 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+N = 10170 
+
+
+=== H2 (hazard framing): minimum tie load predicts flip hazard ===
+
+z test of coefficients:
+
+               Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)  -0.4011586  0.1321995  -3.0345 0.0024094 ** 
+z_min_tie     0.1910642  0.0325188   5.8755 4.216e-09 ***
+z_actor_load -0.0040438  0.0321769  -0.1257 0.8999894    
+z_cinc       -0.4433531  0.0334875 -13.2394 < 2.2e-16 ***
+era1945-1989  0.5871181  0.1371093   4.2821 1.851e-05 ***
+erapost-1989  0.5471113  0.1484109   3.6865 0.0002274 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+

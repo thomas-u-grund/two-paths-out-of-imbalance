@@ -1,0 +1,4 @@
+triad_config,changed_tie_type,n,hit_rate
+two_pos_one_neg,alliance (pos->neg),67,0.11940298507462686
+two_pos_one_neg,dispute (neg->pos),2444,0.9897708674304418
+zero_pos_three_neg,dispute (neg->pos),5,0.6

@@ -1,0 +1,88 @@
+Realignment events: 5419  | single-tie-change: 5414 (99.9%)
+
+Embeddedness tie structure across the 3 edges of a triad (single-change events):
+  all 3 tied: 74.6 %
+  exactly 2 tied: 22.6 %
+  all 3 distinct: 2.7 %
+
+--- embeddedness: naive test (ties counted as success) ---
+
+	Exact binomial test
+
+data:  sum(single$is_min, na.rm = TRUE) and sum(!is.na(single$is_min))
+number of successes = 4488, number of trials = 5414, p-value < 2.2e-16
+alternative hypothesis: true probability of success is not equal to 0.3333333
+95 percent confidence interval:
+ 0.818663 0.838905
+sample estimates:
+probability of success 
+              0.828962 
+
+
+--- embeddedness: primary test (strict minimum only, n=148) ---
+
+	Exact binomial test
+
+data:  sum(strict$is_unique_min, na.rm = TRUE) and nrow(strict)
+number of successes = 40, number of trials = 148, p-value = 0.1163
+alternative hypothesis: true probability of success is not equal to 0.3333333
+95 percent confidence interval:
+ 0.2006277 0.3493507
+sample estimates:
+probability of success 
+             0.2702703 
+
+
+--- embeddedness: conditional logit, full sample ---
+Call:
+coxph(formula = Surv(rep(1, 16242L), changed) ~ embeddedness + 
+    strata(event_id), data = long, method = "exact")
+
+  n= 16242, number of events= 5414 
+
+                coef exp(coef) se(coef)     z Pr(>|z|)    
+embeddedness 0.16974   1.18499  0.01309 12.97   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+             exp(coef) exp(-coef) lower .95 upper .95
+embeddedness     1.185     0.8439     1.155     1.216
+
+Concordance= 0.555  (se = 0.004 )
+Likelihood ratio test= 313.4  on 1 df,   p=<2e-16
+Wald test            = 168.2  on 1 df,   p=<2e-16
+Score (logrank) test = 292.8  on 1 df,   p=<2e-16
+
+
+--- embeddedness: conditional logit, strict-variation subsample ---
+Call:
+coxph(formula = Surv(rep(1, 444L), changed) ~ embeddedness + 
+    strata(event_id), data = long_strict, method = "exact")
+
+  n= 444, number of events= 148 
+
+                coef exp(coef) se(coef)    z Pr(>|z|)
+embeddedness 0.02271   1.02297  0.01831 1.24    0.215
+
+             exp(coef) exp(-coef) lower .95 upper .95
+embeddedness     1.023     0.9775    0.9869      1.06
+
+Concordance= 0.574  (se = 0.044 )
+Likelihood ratio test= 1.51  on 1 df,   p=0.2
+Wald test            = 1.54  on 1 df,   p=0.2
+Score (logrank) test = 1.58  on 1 df,   p=0.2
+
+
+--- betweenness: strict test (n=1781) ---
+
+	Exact binomial test
+
+data:  sum(strict_b$is_min_btw) and nrow(strict_b)
+number of successes = 428, number of trials = 1781, p-value < 2.2e-16
+alternative hypothesis: true probability of success is not equal to 0.3333333
+95 percent confidence interval:
+ 0.2206308 0.2608571
+sample estimates:
+probability of success 
+             0.2403144 
+

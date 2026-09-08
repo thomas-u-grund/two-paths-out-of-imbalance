@@ -1,0 +1,52 @@
+Warning message:
+There were 10 warnings in `mutate()`.
+The first warning was:
+ℹ In argument: `triad_min_polity2 = min(...)`.
+ℹ In row 5169.
+Caused by warning in `min()`:
+! no non-missing arguments to min; returning Inf
+ℹ Run `dplyr::last_dplyr_warnings()` to see the 9 remaining warnings. 
+N with contiguity data: 10170 of 10170 
+N with polity data: 8076 of 10170 
+
+Robustness sample (non-missing IR controls): 8076 person-years, 2118 triads, years 1850 - 2011 
+=== Dissolution hazard, with contiguity + regime-type controls ===
+N = 8076 
+
+z test of coefficients:
+
+              Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)  -4.583359   0.328754 -13.9416 < 2.2e-16 ***
+z_tie_btw     0.148768   0.076531   1.9439  0.051910 .  
+z_tie_emb    -2.498045   0.189364 -13.1917 < 2.2e-16 ***
+z_actor_load -0.333629   0.121587  -2.7440  0.006070 ** 
+z_cinc        0.703753   0.117938   5.9671 2.414e-09 ***
+z_contig     -0.067932   0.069522  -0.9771  0.328505    
+z_polity     -0.159443   0.086223  -1.8492  0.064431 .  
+era1945-1989  0.034851   0.266446   0.1308  0.895933    
+erapost-1989 -0.822585   0.298667  -2.7542  0.005884 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+
+=== Realignment hazard, with contiguity + regime-type controls ===
+N = 8076 
+
+z test of coefficients:
+
+              Estimate Std. Error z value  Pr(>|z|)    
+(Intercept)  -0.734936   0.160100 -4.5905 4.423e-06 ***
+z_tie_btw    -0.016113   0.043767 -0.3682 0.7127526    
+z_tie_emb     0.312902   0.069824  4.4813 7.418e-06 ***
+z_actor_load  0.235175   0.065895  3.5689 0.0003584 ***
+z_cinc       -0.253778   0.045253 -5.6080 2.047e-08 ***
+z_contig     -0.118648   0.032502 -3.6505 0.0002617 ***
+z_polity      0.125431   0.038135  3.2891 0.0010050 ** 
+era1945-1989  1.032267   0.163693  6.3061 2.861e-10 ***
+erapost-1989  0.834961   0.172103  4.8515 1.225e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+08_ir_controls.R complete.
