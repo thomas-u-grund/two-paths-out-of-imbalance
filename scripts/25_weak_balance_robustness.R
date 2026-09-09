@@ -13,14 +13,23 @@
 #     in 07_competing_risks.R, and re-estimates the cause-specific hazard
 #     models to see whether the paper's H1 result is an artifact of
 #     including all-negative triads as "unbalanced."
+#
+#     FIX (external review, second pass): this script originally omitted
+#     the spell-duration fixed effects (dur_bin) that 14_duration_
+#     dependence.R added to the PRIMARY specification reported in Table
+#     2, and compared against 07_competing_risks.R's no-duration output
+#     instead of 14's actual primary (with-duration) models. Both sides
+#     of the Appendix A13/Table A14 comparison were therefore silently
+#     using the pre-duration-control specification. Fixed here: duration
+#     bins are reconstructed the same way as in script 14, added to both
+#     hazard formulas, and the comparison now pulls the correct primary
+#     estimates from results/duration_dependence_models.rds (m_dis1/
+#     m_flip1) instead of results/competing_risks_models.rds.
 # ------------------------------------------------------------------
 suppressMessages({
   library(dplyr); library(readr); library(sandwich); library(lmtest); library(tidyr)
 })
 
-# Run from the replication pack root, e.g.:
-#   cd replication_pack && Rscript scripts/25_weak_balance_robustness.R
-# (relative paths below assume that working directory; no setwd() needed)
 
 tr_raw <- readRDS("data/triads_all_years.rds")
 
@@ -87,6 +96,15 @@ person_years <- spells %>%
 cat("\n[Weak balance] Usable person-year rows:", nrow(person_years), "\n")
 print(table(person_years$row_event))
 
+# --- spell-duration fixed effects, reconstructed exactly as in 14_duration_dependence.R ---
+onset <- spells %>% group_by(spell_id) %>% summarise(onset_year = min(year), .groups = "drop")
+person_years <- person_years %>%
+  left_join(onset, by = "spell_id") %>%
+  mutate(duration = year - onset_year + 1,
+         dur_bin = cut(duration, breaks = c(0, 1, 2, 3, 5, 10, Inf),
+                        labels = c("yr1", "yr2", "yr3", "yr4-5", "yr6-10", "yr11+")))
+cat("\n[Weak balance] Duration bin distribution:\n"); print(table(person_years$dur_bin))
+
 zscore <- function(x) as.numeric(scale(x))
 person_years <- person_years %>% mutate(
   z_actor_load = zscore(actor_load_mean),
@@ -98,16 +116,21 @@ person_years <- person_years %>% mutate(
   event_flip     = as.numeric(row_event == "flipped")
 )
 
-m_haz_dissolve <- glm(event_dissolve ~ z_tie_btw + z_tie_emb + z_actor_load + z_cinc + era,
+m_haz_dissolve <- glm(event_dissolve ~ z_tie_btw + z_tie_emb + z_actor_load + z_cinc + era + dur_bin,
                        data = person_years, family = binomial())
-m_haz_flip <- glm(event_flip ~ z_tie_btw + z_tie_emb + z_actor_load + z_cinc + era,
+m_haz_flip <- glm(event_flip ~ z_tie_btw + z_tie_emb + z_actor_load + z_cinc + era + dur_bin,
                    data = person_years, family = binomial())
 
 ct_haz_dissolve <- coeftest(m_haz_dissolve, vcov = vcovCL(m_haz_dissolve, cluster = person_years$triad_id))
 ct_haz_flip     <- coeftest(m_haz_flip,     vcov = vcovCL(m_haz_flip,     cluster = person_years$triad_id))
 
-# --- side-by-side comparison against the paper's original (strong-balance) estimates ---
-orig <- readRDS("results/competing_risks_models.rds")
+# --- side-by-side comparison against the paper's ACTUAL primary (strong-balance,
+#     WITH duration fixed effects) estimates -- the fix: this used to read from
+#     competing_risks_models.rds (script 07), which has no duration control and
+#     does not match Table 2. The correct primary models (m_dis1/m_flip1) live in
+#     duration_dependence_models.rds (script 14). ---
+orig_all <- readRDS("results/duration_dependence_models.rds")
+orig <- list(ct_haz_dissolve = orig_all$ct_dis1, ct_haz_flip = orig_all$ct_flip1)
 
 compare_coef <- function(term, orig_ct, new_ct) {
   o <- orig_ct[term, c("Estimate", "Pr(>|z|)")]
