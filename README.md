@@ -9,7 +9,7 @@ Everything needed to reproduce the paper's results, self-contained.
 
 ```
 manuscript/     the manuscript and appendix (PDF + LaTeX source)
-scripts/        01-25, run in numeric order (see scripts/README.md)
+scripts/        01-26, run in numeric order (see scripts/README.md)
 raw/            Correlates of War source data, as downloaded (unmodified)
 data/           intermediate panels the scripts build from raw/ — included
                 so you don't have to re-run everything to inspect them,
