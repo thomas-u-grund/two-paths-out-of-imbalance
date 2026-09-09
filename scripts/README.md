@@ -38,6 +38,7 @@ robustness/diagnostic checks.
 | 24 | `24_h1_unbalanced_load_control.R` | Tests whether H1's embeddedness–realignment effect survives controlling for the triad's current unbalanced load (exposure vs. pressure) | §4.1, Appendix A13 |
 | 25 | `25_weak_balance_robustness.R` | Reclassifies imbalance under Davis's (1967) weak-balance criterion (all-negative triads treated as balanced), rebuilds the spell structure, and re-estimates the primary hazard models | §3.1, Appendix A14 |
 | 26 | `26_cloglog_robustness.R` | Re-estimates the primary hazard specification (Table 2) with a complementary log-log link instead of logit, to check whether the link choice drives the results | §3.3, Appendix A15 |
+| 27 | `27_alliance_mid_overlap_robustness.R` | Checks how much of H1 and H2 depends on dyad-years where an alliance and a MID coexist (resolved negative by the script 01 precedence rule): drops those dyad-years entirely and rebuilds the triad/spell panel for H1; flags and excludes overlap-affected realignment events for H2 | §3.1, §4.3, Appendix A16 |
 
 ## Legacy scripts
 

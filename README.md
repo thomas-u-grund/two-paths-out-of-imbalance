@@ -8,7 +8,7 @@ Everything needed to reproduce the paper's results, self-contained.
 ## Contents
 
 ```
-scripts/        01-26, run in numeric order (see scripts/README.md)
+scripts/        01-27, run in numeric order (see scripts/README.md)
 raw/            Correlates of War source data, as downloaded (unmodified)
 data/           intermediate panels the scripts build from raw/ — included
                 so you don't have to re-run everything to inspect them,

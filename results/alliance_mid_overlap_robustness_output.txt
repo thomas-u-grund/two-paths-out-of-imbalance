@@ -1,0 +1,87 @@
+=== PART A: H1, alliance/MID-overlap dyad-years dropped ===
+N (person-years): 622  | full panel: 10,170
+
+Dissolution hazard, z_tie_emb:
+   Estimate  Std. Error     z value    Pr(>|z|) 
+-0.06121772  0.11467506 -0.53383636  0.59345475 
+full panel: b=-2.508, SE=0.161
+
+Realignment hazard, z_tie_emb:
+     Estimate    Std. Error       z value      Pr(>|z|) 
+-3.033731e+00  3.225022e-01 -9.406853e+00  5.112141e-21 
+full panel: b=+0.439, SE=0.046
+
+Full dissolution model:
+
+z test of coefficients:
+
+               Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)    1.485829   0.218269   6.8073 9.943e-12 ***
+z_tie_btw     -0.090445   0.136826  -0.6610  0.508597    
+z_tie_emb     -0.061218   0.114675  -0.5338  0.593455    
+z_actor_load  -0.069820   0.110706  -0.6307  0.528250    
+z_cinc         0.184561   0.113347   1.6283  0.103464    
+era1945-1989  -0.622167   0.276913  -2.2468  0.024653 *  
+erapost-1989  -0.371511   0.318569  -1.1662  0.243538    
+dur_binyr2     0.106699   0.258813   0.4123  0.680146    
+dur_binyr3    -1.202725   0.419170  -2.8693  0.004114 ** 
+dur_binyr4-5  -2.145709   0.498753  -4.3021 1.691e-05 ***
+dur_binyr6-10 -1.448329   0.555278  -2.6083  0.009099 ** 
+dur_binyr11+  -2.650076   0.212287 -12.4835 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Full realignment model:
+
+z test of coefficients:
+
+                Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)    -8.311055   0.972949  -8.5421 < 2.2e-16 ***
+z_tie_btw      -0.029465   0.455512  -0.0647 0.9484246    
+z_tie_emb      -3.033731   0.322502  -9.4069 < 2.2e-16 ***
+z_actor_load   -2.447363   0.678005  -3.6097 0.0003066 ***
+z_cinc          0.946680   0.297670   3.1803 0.0014712 ** 
+era1945-1989  -17.177476   1.070376 -16.0481 < 2.2e-16 ***
+erapost-1989    1.486523   1.217030   1.2214 0.2219216    
+dur_binyr2    -17.714846   0.894340 -19.8077 < 2.2e-16 ***
+dur_binyr3    -17.881002   1.614908 -11.0725 < 2.2e-16 ***
+dur_binyr4-5  -17.095362   1.490977 -11.4659 < 2.2e-16 ***
+dur_binyr6-10 -13.375046   1.211003 -11.0446 < 2.2e-16 ***
+dur_binyr11+  -13.807062   1.408621  -9.8018 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+
+=== PART B: H2, overlap-affected realignment events ===
+Single-tie-change events: 5414 
+Overlap-affected: 5398 (99.70%)
+
+Primary test (all 3 UL distinct), excluding overlap-affected: N=5, hit rate=0% (original 96.6%)
+
+	Exact binomial test
+
+data:  sum(strict_clean$is_max_ul) and nrow(strict_clean)
+number of successes = 0, number of trials = 5, p-value = 0.177
+alternative hypothesis: true probability of success is not equal to 0.3333333
+95 percent confidence interval:
+ 0.0000000 0.5218238
+sample estimates:
+probability of success 
+                     0 
+
+
+Same-sign-pairs test, excluding overlap-affected: N=13, hit rate=46.2% (original 75.2%)
+
+	Exact binomial test
+
+data:  sum(same_sign_pairs_clean$higher_load_changed) and nrow(same_sign_pairs_clean)
+number of successes = 6, number of trials = 13, p-value = 1
+alternative hypothesis: true probability of success is not equal to 0.5
+95 percent confidence interval:
+ 0.1922324 0.7486545
+sample estimates:
+probability of success 
+             0.4615385 
+
