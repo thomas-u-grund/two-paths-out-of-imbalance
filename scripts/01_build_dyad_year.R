@@ -5,9 +5,6 @@ library(dplyr)
 library(readr)
 library(tidyr)
 
-# Run from the replication pack root, e.g.:
-#   cd replication_pack && Rscript scripts/01_build_dyad_year.R
-# (relative paths below assume that working directory; no setwd() needed)
 raw <- "raw"
 
 # 1. Alliances -> positive ties (defense, neutrality, nonaggression, entente)
@@ -30,10 +27,21 @@ mids <- read_csv(file.path(raw, "mids/dyadic_mid_4.03_update/dyadic_mid_4.03.csv
 
 # 3. Merge: if a dyad-year has both an alliance and a MID, code as negative
 #    (conflict dominates cooperation in the same year — conservative choice)
+#    NOTE (fixed after external review): `multiplex` used to be computed as
+#    n_distinct(sign) > 1 in the SAME summarise() call as the `sign :=`
+#    reassignment immediately above it. dplyr's summarise() evaluates
+#    expressions sequentially and lets later ones see earlier ones' already-
+#    collapsed results, so that `sign` in the multiplex expression was the
+#    NEW single resolved value, not the original per-group vector -- meaning
+#    multiplex was silently FALSE for every single dyad-year, always,
+#    regardless of the actual underlying data. Fixed by computing it from the
+#    original (pre-collapse) sign values via a separately-named summary.
 signed_ties <- bind_rows(alliances, mids) %>%
   group_by(year, ccode_low, ccode_high) %>%
-  summarise(sign = ifelse(any(sign == -1), -1, 1),
-            multiplex = n_distinct(sign) > 1, .groups = "drop")
+  summarise(has_alliance = any(sign == 1), has_mid = any(sign == -1),
+            sign = ifelse(has_mid, -1, 1),
+            multiplex = has_alliance & has_mid, .groups = "drop") %>%
+  select(year, ccode_low, ccode_high, sign, multiplex)
 
 cat("Signed ties built:", nrow(signed_ties), "\n")
 cat("  positive:", sum(signed_ties$sign == 1), " negative:", sum(signed_ties$sign == -1), "\n")
