@@ -1,19 +1,17 @@
 # ------------------------------------------------------------------
-# 12: H2, revised. The original test used total embeddedness (all
-#     overlapping triangles, balanced + unbalanced) and betweenness
-#     (bridging importance) as measures of "tie load" -- neither
-#     specifically captures pressure toward realignment, which should
-#     come from OTHER UNBALANCED triads sharing the tie, not from
-#     structural position generally. A tie can be highly embedded while
-#     under little consistency pressure if most of what it's embedded
-#     in is already balanced.
+# 12: H2, tested with a measure specific to realignment pressure. Total
+#     embeddedness (all overlapping triangles, balanced + unbalanced) and
+#     betweenness (bridging importance) capture structural position
+#     generally, not pressure toward realignment specifically, which
+#     should come from OTHER UNBALANCED triads sharing the tie. A tie can
+#     be highly embedded while under little consistency pressure if most
+#     of what it's embedded in is already balanced.
 #
-#     New measure, UnbalancedLoad(e) at year t: the number of OTHER
-#     closed triads (besides the focal one) at year t that (a) contain
-#     edge e and (b) are themselves unbalanced. Revised H2: within a
-#     realigning triad, the tie that changes is the one with the
-#     HIGHEST UnbalancedLoad (most other unbalanced triads pulling on
-#     it), not the lowest embeddedness/betweenness.
+#     Measure: UnbalancedLoad(e) at year t is the number of OTHER closed
+#     triads (besides the focal one) at year t that (a) contain edge e
+#     and (b) are themselves unbalanced. H2: within a realigning triad,
+#     the tie that changes is the one with the HIGHEST UnbalancedLoad
+#     (most other unbalanced triads pulling on it).
 # ------------------------------------------------------------------
 suppressMessages({ library(dplyr); library(readr); library(tidyr); library(survival); library(purrr) })
 
@@ -68,7 +66,7 @@ single <- single %>%
     is_max_ul = changed_ul == max_ul
   )
 
-cat("\n=== Revised H2: naive test (ties counted as success) ===\n")
+cat("\n=== H2: naive test (ties counted as success) ===\n")
 cat("Changed tie has MAX UnbalancedLoad in", round(mean(single$is_max_ul) * 100, 1), "% of events (null=33.3%)\n")
 print(binom.test(sum(single$is_max_ul), nrow(single), p = 1/3))
 
@@ -78,7 +76,7 @@ cat("Exactly two equal:", round(mean(single$n_distinct_ul == 2) * 100, 1), "%\n"
 cat("All three distinct:", round(mean(single$n_distinct_ul == 3) * 100, 1), "%\n")
 
 strict <- single %>% filter(n_distinct_ul == 3)
-cat("\n=== Revised H2, PRIMARY test: restricted to events with all 3 UnbalancedLoad values distinct (n=", nrow(strict), ") ===\n", sep = "")
+cat("\n=== H2, PRIMARY test: restricted to events with all 3 UnbalancedLoad values distinct (n=", nrow(strict), ") ===\n", sep = "")
 cat("Changed tie has MAX UnbalancedLoad in", round(mean(strict$is_max_ul) * 100, 1), "% of events (null=33.3%)\n")
 bt <- binom.test(sum(strict$is_max_ul), nrow(strict), p = 1/3)
 print(bt)

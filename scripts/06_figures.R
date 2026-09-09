@@ -19,8 +19,8 @@ p1 <- ggplot(by_year, aes(x = year, y = pct_unbalanced)) +
 ggsave("results/fig1_imbalance_over_time.png", p1, width = 8, height = 4.5, dpi = 300)
 
 # --- Figure 2: descriptive P(frozen) across embeddedness (compositional
-#     quantity -- see DECISIONS.md D19: NOT a directly-estimated nonlinear
-#     effect; both component contrasts below are monotonic) ---
+#     quantity, NOT a directly-estimated nonlinear effect; both component
+#     contrasts below are monotonic) ---
 m <- readRDS("results/models.rds")
 mq <- m$m_frozen_pooled_quad
 df <- m$df
@@ -44,8 +44,8 @@ p2 <- ggplot(newdat, aes(x = z_tie_emb, y = fit)) +
   theme_minimal(base_size = 12)
 ggsave("results/fig2_curvilinear_frozen.png", p2, width = 7.5, height = 5, dpi = 200)
 
-# --- Figure 3: outcome shares by embeddedness tercile (illustrative;
-#     purely descriptive, unaffected by D19) ---
+# --- Figure 3: outcome shares by embeddedness tercile (illustrative,
+#     purely descriptive) ---
 df3 <- df %>% mutate(emb_tercile = ntile(tie_emb_mean, 3),
                       emb_label = factor(emb_tercile, labels = c("Low embeddedness", "Medium embeddedness", "High embeddedness")))
 share_df <- df3 %>% count(emb_label, outcome) %>% group_by(emb_label) %>% mutate(share = n / sum(n))

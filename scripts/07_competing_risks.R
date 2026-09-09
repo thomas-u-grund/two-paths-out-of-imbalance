@@ -1,7 +1,8 @@
 # ------------------------------------------------------------------
 # 07: Competing-risks (discrete-time, cause-specific hazard) model.
-#     Replaces the fixed 5-year-window logistic decomposition (scripts
-#     03-04) as the primary specification -- see DECISIONS.md D23.
+#     This is the paper's primary specification, in preference to the
+#     fixed 5-year-window logistic decomposition (scripts 03-04): it uses
+#     the full duration of each spell rather than a single fixed window.
 #
 #     Each unbalanced spell is expanded into one person-year row per
 #     year at risk, with TIME-VARYING load covariates (updated every

@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------
-# 22: Three diagnostics requested directly by a critical external
-#     review of H2 (the unbalanced-load tie-choice result):
+# 22: Three diagnostics addressing potential objections to H2 (the
+#     unbalanced-load tie-choice result):
 #
 #  (A) Sign-composition test. Does unbalanced load predict which tie
 #      changes beyond simply identifying "the unique negative tie in a
@@ -17,9 +17,9 @@
 #      distribution of triads-per-transition; re-run the primary H2
 #      test clustering at the dyad-year-transition level.
 #
-#  (C) Net balance gain. The reviewer's point that a tie's B (balanced
-#      overlapping triangles, which a flip would newly UNbalance) should
-#      offset its U (unbalanced overlapping triangles, which a flip
+#  (C) Net balance gain. A tie's B (balanced overlapping triangles,
+#      which a flip would newly UNbalance) should arguably offset its
+#      U (unbalanced overlapping triangles, which a flip
 #      would resolve) -- test U-B (equivalently 2U-E, E = total
 #      embeddedness = U+B) as an alternative/additional predictor to
 #      unbalanced load alone.

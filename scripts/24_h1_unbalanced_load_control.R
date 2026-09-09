@@ -4,8 +4,8 @@
 #     of OTHER closed triads sharing that edge that are themselves
 #     unbalanced in year t), alongside total triadic embeddedness.
 #
-#     Motivated by external review (feedback2.docx): the paper's own
-#     H1 argument reframes total embeddedness as a triad-level EXPOSURE
+#     The paper's own H1 argument reframes total embeddedness as a
+#     triad-level EXPOSURE
 #     measure (how many surrounding configurations could eventually turn
 #     unbalanced), distinct from unbalanced load's INSTANTANEOUS pressure
 #     (Section 2.2-2.3). That raises the natural question of whether

@@ -12,7 +12,7 @@ suppressMessages({
 signed_ties <- read_csv("data/signed_ties.csv", show_col_types = FALSE) %>%
   # 1816-2012, not 2014: alliance data (v4.1) right-censors at 2012 while
   # MID data runs to 2014, so 2013-2014 have conflict ties but essentially
-  # no alliance ties -- a data-boundary artifact, not signal (DECISIONS.md D16).
+  # no alliance ties -- a data-boundary artifact, not signal.
   # This filter also drops 2 stray year=0 rows (raw MID data artifact).
   filter(year >= 1816, year <= 2012)
 nmc <- read_csv("raw/nmc/NMCv7/abridged/NMC-70-abridged.csv", show_col_types = FALSE) %>%
@@ -95,7 +95,6 @@ process_year <- function(yr) {
     deg_mean = (get_node(n1, "degree") + get_node(n2, "degree") + get_node(n3, "degree")) / 3,
     # per-edge values (not just the triad mean) -- needed to identify which
     # specific tie changed at realignment (H2) or disappeared at dissolution
-    # (DECISIONS.md D29)
     tie12_emb = edge_tbl$embeddedness[idx12], tie13_emb = edge_tbl$embeddedness[idx13], tie23_emb = edge_tbl$embeddedness[idx23],
     tie12_btw = edge_tbl$edge_btw[idx12], tie13_btw = edge_tbl$edge_btw[idx13], tie23_btw = edge_tbl$edge_btw[idx23],
     tie_btw_mean = (tie12_btw + tie13_btw + tie23_btw) / 3,

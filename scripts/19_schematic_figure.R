@@ -1,9 +1,8 @@
 # ------------------------------------------------------------------
 # 19: Schematic figure explaining triadic embeddedness and unbalanced
-#     load. Fifth version, redesigned per explicit user direction:
-#     instead of one figure trying to show the whole worked example at
-#     once, build the two concepts up incrementally across several
-#     small, simple panels.
+#     load, built up incrementally across several small, simple panels
+#     rather than one figure trying to show the whole worked example
+#     at once.
 #
 #     Panel sequence:
 #       (a) a bare tie (two nodes, one edge) -- the starting point
@@ -29,12 +28,11 @@
 #     to matter for the concept being shown.
 #
 #     Caption text is drawn INSIDE each panel's own data space (a
-#     geom_text below the diagram), not as a ggplot plot.title -- an
-#     earlier version used long two-line titles, which overflowed
-#     sideways into the neighbouring panel (plot titles are not
-#     clipped to their own panel's width by patchwork/ggplot2 the way
-#     in-panel data is), producing garbled overlapping text. Titles are
-#     now just the bare panel letter.
+#     geom_text below the diagram), not as a ggplot plot.title: plot
+#     titles are not clipped to their own panel's width by
+#     patchwork/ggplot2 the way in-panel data is, so a long caption in
+#     the title would overflow sideways into the neighbouring panel.
+#     Titles are just the bare panel letter.
 # ------------------------------------------------------------------
 suppressMessages({ library(ggplot2); library(dplyr); library(tibble); library(patchwork) })
 

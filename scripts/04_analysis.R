@@ -1,7 +1,10 @@
 # ------------------------------------------------------------------
-# 04: Empirical models — three-way outcome (dissolved / flipped / frozen)
-#     See DECISIONS.md D14 for why this replaced the original binary
-#     "resolved" outcome.
+# 04: Empirical models on the fixed 5-year resolution panel (script 03).
+#     Outcome is three-way: an unbalanced triad, by t+5, either dissolved
+#     (a tie disappeared), flipped (became balanced), or froze (stayed
+#     closed and unbalanced) -- rather than a collapsed binary "resolved"
+#     outcome, since dissolution and flipping are conceptually distinct
+#     resolutions.
 # ------------------------------------------------------------------
 suppressMessages({
   library(dplyr); library(readr); library(broom); library(sandwich); library(lmtest)
@@ -86,7 +89,7 @@ z_multi <- multi_sum$coefficients / multi_sum$standard.errors
 p_multi <- 2 * (1 - pnorm(abs(z_multi)))
 
 # ------------------------------------------------------------------
-# H1 (revised, see DECISIONS.md D19): TWO-EQUATION DECOMPOSITION.
+# H1: TWO-EQUATION DECOMPOSITION.
 # A single collapsed "frozen vs. everything else" model with a quadratic
 # tie-load term produces a spurious-looking curvilinear result that is
 # actually a compositional artifact of pooling two categories (dissolved,
@@ -117,7 +120,7 @@ lrt_frozen    <- anova(m_frozen_lin, m_frozen_quad, test = "Chisq")
 
 # retained for the descriptive Figure 2 (predicted share of "frozen" among
 # ALL unbalanced triads) -- explicitly a compositional/derived quantity,
-# not treated as evidence of a direct nonlinear mechanism (D19)
+# not treated as evidence of a direct nonlinear mechanism
 m_frozen_pooled_quad <- glm(frozen ~ z_tie_btw + z_tie_emb + I(z_tie_emb^2) + z_actor_load + z_cinc + era, data = df, family = binomial())
 
 # ------------------------------------------------------------------
@@ -132,7 +135,8 @@ ct2 <- coeftest(m2, vcov = vcovCL(m2, cluster = flipped_df$triad_id))
 
 # ------------------------------------------------------------------
 # H3: actor load and initiation — tested on the SAME two clean contrasts
-# as H1, for consistency (bivariate + conditional, transparency per D13)
+# as H1, for consistency (both bivariate and conditional specifications
+# reported, for transparency)
 # ------------------------------------------------------------------
 m3  <- glm(I(outcome == "frozen") ~ z_actor_load + z_cinc + era, data = df_frozen_flip, family = binomial())
 ct3 <- coeftest(m3, vcov = vcovCL(m3, cluster = df_frozen_flip$triad_id))
@@ -156,7 +160,7 @@ cat("=== Outcome distribution ===\n"); print(table(df$outcome)); cat("\n")
 
 cat("=== Multinomial logit, descriptive only (ref = flipped) ===\n")
 cat("(Reported for completeness; the two-equation decomposition below is\n")
-cat(" the primary specification -- see DECISIONS.md D19.)\n")
+cat(" the primary specification.)\n")
 cat("\n-- Coefficients --\n"); print(round(multi_sum$coefficients, 3))
 cat("\n-- p-values --\n"); print(round(p_multi, 4))
 cat("\nN =", nrow(df), " AIC =", AIC(m_multi), "\n")
@@ -173,9 +177,9 @@ cat("\n\n=== PRIMARY H1b: frozen vs flipped — quadratic ===\n")
 print(ct_frozen_quad)
 cat("\nLRT linear vs quadratic (frozen vs flipped):\n"); print(lrt_frozen)
 
-cat("\n\n=== [Descriptive only, D19] Pooled frozen-vs-rest quadratic model ===\n")
+cat("\n\n=== [Descriptive only] Pooled frozen-vs-rest quadratic model ===\n")
 cat("(used only to generate Fig. 2's descriptive P(frozen) curve; NOT\n")
-cat(" interpreted as a direct nonlinear mechanism -- see DECISIONS.md D19)\n")
+cat(" interpreted as a direct nonlinear mechanism)\n")
 print(summary(m_frozen_pooled_quad)$coefficients)
 
 cat("\n\n=== H2: lowest-load tie predicts flip-not-freeze ===\n")

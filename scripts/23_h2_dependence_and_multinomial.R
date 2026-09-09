@@ -1,9 +1,8 @@
 # ------------------------------------------------------------------
-# 23: Two follow-up items from a second round of critical review of
-#     script 22's diagnostics:
+# 23: Two follow-up checks extending script 22's diagnostics:
 #
 #  (A) The same-sign comparison (75.2% of same-sign tie-pairs go to the
-#      higher-unbalanced-load tie, n=137) is now the paper's primary
+#      higher-unbalanced-load tie, n=137) is the paper's primary
 #      evidential claim for H2, but had not itself been checked for the
 #      dyad-year dependence documented for the pooled 96.6% figure.
 #      Count unique dyad-year transitions underlying the 137 pairs and

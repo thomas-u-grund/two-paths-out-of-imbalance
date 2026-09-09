@@ -1,13 +1,10 @@
 # ------------------------------------------------------------------
-# 09: H2, done properly. The earlier version tested "does low minimum
-#     triad embeddedness predict the realignment hazard" -- not the
-#     actual hypothesis, which is about WHICH of a triad's three ties
-#     changes when it does realign. Fixed per external review round 2
-#     (DECISIONS.md D28): identify the specific tie that changed sign
-#     for every realignment event, and test whether it was the least-
-#     embedded of the triad's three ties, against the 1/3 null and via
-#     a conditional logit treating the three ties as discrete choice
-#     alternatives.
+# 09: H2 is about WHICH of a triad's three ties changes when it realigns,
+#     not just whether low embeddedness predicts the realignment hazard
+#     overall. For every realignment event, identify the specific tie
+#     that changed sign, and test whether it was the least-embedded of
+#     the triad's three ties, against the 1/3 null and via a conditional
+#     logit treating the three ties as discrete choice alternatives.
 # ------------------------------------------------------------------
 suppressMessages({ library(dplyr); library(readr); library(survival) })
 

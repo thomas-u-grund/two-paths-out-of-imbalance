@@ -8,10 +8,7 @@ rather than `setwd()`, so run them with the pack root (`replication_pack/`)
 as the working directory: `cd replication_pack && Rscript scripts/NN_name.R`.
 
 Core pipeline (01–03) builds the data; 04–25 are estimation, figures, and
-the robustness/diagnostic checks accumulated across several rounds of
-review. (The reasoning behind each one, and which round of editorial
-feedback prompted it, is documented in the working project this pack was
-exported from, not included here.)
+robustness/diagnostic checks.
 
 | # | Script | What it does | Paper section |
 |---|--------|---------------|----------------|
@@ -19,7 +16,7 @@ exported from, not included here.)
 | 02 | `02_triads_and_load.R` | Enumerates closed triads per year, classifies balance, computes embeddedness/betweenness/actor constraint | §3.1–3.2 |
 | 03 | `03_resolution_panel.R` | Builds the fixed 5-year-window resolution panel (superseded as primary design by 07, kept as the appendix's fixed-window benchmark) | Appendix A5 |
 | 04 | `04_analysis.R` | Fixed-window logistic models on the panel from 03 | Appendix A5 |
-| 05 | `05_abm_robustness.R` | Compact agent-based simulation: does load-constrained tie dynamics generate persistent imbalance? | §5 discussion / D6, D27 |
+| 05 | `05_abm_robustness.R` | Compact agent-based simulation: does load-constrained tie dynamics generate persistent imbalance? | §5 discussion |
 | 06 | `06_figures.R` | Early descriptive figure (balanced vs. unbalanced triads over time) | Appendix A7 (Figure A1) |
 | 07 | `07_competing_risks.R` | **Primary specification.** Discrete-time cause-specific competing-risks hazard models (dissolution vs. realignment) | §3.3, §4.1, Table 2 |
 | 08 | `08_ir_controls.R` | Adds contiguity and Polity5 regime-type controls to the primary hazards | §4.5 |

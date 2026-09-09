@@ -2,16 +2,16 @@
 # 14: Add spell-duration fixed effects to the primary competing-risks
 #     hazard models (dissolution and realignment), and re-run the
 #     trade/contiguity/regime robustness checks with the same duration
-#     control added, for full internal consistency with the new primary
+#     control added, for full internal consistency with the primary
 #     specification.
 #
-#     Motivated by external review: the discrete-time hazard framework
-#     needs a baseline-hazard specification (duration dummies, in this
-#     case) or a covariate that happens to correlate with spell duration
-#     can absorb what is really just "transitions cluster early in a
-#     spell's life" (visible descriptively in Figure 1's cumulative
-#     incidence curves). This checks whether H1 survives once duration
-#     is modeled explicitly. It does.
+#     The discrete-time hazard framework needs a baseline-hazard
+#     specification (duration dummies, in this case), or a covariate that
+#     happens to correlate with spell duration can absorb what is really
+#     just "transitions cluster early in a spell's life" (visible
+#     descriptively in Figure 1's cumulative incidence curves). This
+#     checks whether H1 survives once duration is modeled explicitly.
+#     It does.
 # ------------------------------------------------------------------
 suppressMessages({
   library(dplyr); library(readr); library(readxl); library(sandwich); library(lmtest); library(tidyr)

@@ -1,13 +1,9 @@
 # ------------------------------------------------------------------
-# 05: Compact agent-based generative-sufficiency check (replaces full
-#     NetLogo model -- see DECISIONS.md D6). This is now a direct
-#     simulation of the exit-vs-adaptation theory (DECISIONS.md D27),
-#     not the earlier "blocked flip" version: that version only let load
-#     block or permit a sign flip, with no dissolution channel at all,
-#     so it could not actually speak to the paper's real claim (that low
-#     load produces dissolution and high load produces realignment) and
-#     produced a confusing, hard-to-interpret pattern on larger networks
-#     as a result (see D27 for the full diagnosis).
+# 05: Compact agent-based generative-sufficiency check for the exit-vs-
+#     adaptation theory: does a simple local rule where low-load ties
+#     dissolve and high-load ties realign actually generate the empirical
+#     flipped/frozen/dissolved pattern, or does it require assuming what
+#     it's meant to explain?
 #
 #     Two rules compared on each of four real historical interstate
 #     networks (1914, 1949, 1985, 2005):

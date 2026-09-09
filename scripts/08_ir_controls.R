@@ -1,9 +1,8 @@
 # ------------------------------------------------------------------
 # 08: Robustness -- add contiguity and regime-type (Polity5) controls
-#     to the primary competing-risks hazard models. Requested directly
-#     by external review (round 2): reviewers at JCR "will ask" for
-#     these, and their absence is a sharper gap for a rivalry-adjacent
-#     venue than for a generalist network journal (DECISIONS.md D28).
+#     to the primary competing-risks hazard models, since both are
+#     standard confounds in interstate-conflict/alliance research and
+#     their omission would be a natural first objection.
 # ------------------------------------------------------------------
 suppressMessages({
   library(dplyr); library(readr); library(readxl); library(sandwich); library(lmtest); library(tidyr)

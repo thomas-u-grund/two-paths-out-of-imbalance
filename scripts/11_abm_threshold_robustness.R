@@ -3,7 +3,7 @@
 #     reaches higher final balance / lower residual imbalance than
 #     Model A on every network) hold across different dissolution-
 #     eligibility thresholds, not just the 25th percentile used as the
-#     primary specification? Requested by external review round 4.
+#     primary specification?
 # ------------------------------------------------------------------
 suppressMessages({ library(dplyr); library(readr); library(igraph); library(ggplot2) })
 

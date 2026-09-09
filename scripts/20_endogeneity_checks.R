@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------
-# 20: Endogeneity/identification checks requested by external review.
-#     Structural covariates (embeddedness, actor constraint) are
+# 20: Endogeneity/identification checks. Structural covariates
+#     (embeddedness, actor constraint) are
 #     computed from the same yearly network that generates the outcome,
 #     so they cannot be treated as exogenously manipulated. Two checks:
 #

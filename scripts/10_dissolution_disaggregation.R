@@ -2,10 +2,10 @@
 # 10: Disaggregate "dissolution" by which specific tie disappeared and
 #     what type it was (alliance vs. militarized dispute) at the time,
 #     and whether it coincides with one of the two endpoint states
-#     exiting the interstate system entirely. Requested by external
-#     review round 2 (DECISIONS.md D28): "dissolution" pooling alliance
-#     expiration, MID non-recurrence, and state death is a real
-#     substantive concern for a JCR reviewer.
+#     exiting the interstate system entirely. "Dissolution" as used
+#     elsewhere pools alliance expiration, MID non-recurrence, and state
+#     death, so it's worth checking these aren't driving the result in
+#     substantively different ways.
 # ------------------------------------------------------------------
 suppressMessages({ library(dplyr); library(readr) })
 
